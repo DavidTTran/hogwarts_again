@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe "visiting the professors page" do
-  it "can see all the students" do
+describe "visiting the students page" do
+  it "can see all the students, and number of professors" do
 
     snape = Professor.create(name: "Severus Snape", age: 45, specialty: "Potions")
     hagarid = Professor.create(name: "Rubus Hagarid", age: 38 , specialty: "Care of Magical Creatures")
@@ -18,21 +18,12 @@ describe "visiting the professors page" do
     ProfessorStudent.create(student_id: malfoy.id, professor_id: lupin.id)
     ProfessorStudent.create(student_id: longbottom.id, professor_id: snape.id)
 
-    visit "/professors/#{snape.id}"
+    visit "/students"
 
-    expect(page).to have_content(harry.name)
-    expect(page).to have_content(longbottom.name)
-    expect(page).to have_content("Average age: 11")
+    expect(page).to have_content("#{harry.name}: 3")
+    expect(page).to have_content("#{malfoy.name}: 2")
+    expect(page).to have_content("#{longbottom.name}: 1")
 
-    visit "/professors/#{lupin.id}"
 
-    expect(page).to have_content(harry.name)
-    expect(page).to have_content(malfoy.name)
-    expect(page).to have_content("Average age: 11.5")
-
-    visit "/professors/#{hagarid.id}"
-
-    expect(page).to have_content(harry.name)
-    expect(page).to have_content(malfoy.name)
   end
 end
