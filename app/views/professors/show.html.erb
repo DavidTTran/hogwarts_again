@@ -1,6 +1,7 @@
 <h2>Professor's Students</h2>
-<section class="students_list"
-  <% @students.each do |student| %>
+<section class="students_list">
+  <% @professor.students.each do |student| %>
     <%= student.name %><br>
   <% end %>
 </section>
+Average age: <%= @professor.average_student_age %>
