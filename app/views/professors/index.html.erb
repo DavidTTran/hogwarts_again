@@ -2,7 +2,7 @@
 
 <% @professors.each do |professor| %>
   <section id="professor-<%= professor.id %>">
-    Name: <%= professor.name %>,
+    Name: <%= link_to professor.name, "/professors/#{professor.id}" %>,
     Age: <%= professor.age %>,
     Specialty: <%= professor.specialty %>
   </section>
