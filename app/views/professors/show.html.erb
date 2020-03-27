@@ -3,5 +3,5 @@
   <% @professor.students.order(:name).each do |student| %>
     <%= student.name %><br>
   <% end %>
-</section>
+</section><br>
 Average age: <%= @professor.average_student_age %>
